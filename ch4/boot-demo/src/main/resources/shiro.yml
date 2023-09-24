@@ -1,0 +1,12 @@
+my:
+  shiro:
+    urls:
+      - /jsp/user/login.jsp=anon
+      - /user/login=anon
+      - /brand/list=authc, orRoles[sys_manager,dep_manager], perms["brand:view"]
+      - /brand/add=authc, orRoles[sys_manager,dep_manager], perms["brand:add"]
+      - /jsp/brand/add.jsp=authc, orRoles[sys_manager,dep_manager], perms["brand:add"]
+      - /brand/**=authc, orRoles[sys_manager,dep_manager]
+      - /jsp/**=authc
+      - /user/**=authc
+
