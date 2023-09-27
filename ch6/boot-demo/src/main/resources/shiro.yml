@@ -1,0 +1,19 @@
+my:
+  shiro:
+    urls:
+      - /api/user/login=anon
+      - /api/user/**=apiAuth
+      - /api/brand/**=apiAuth, orRoles[sys_manager,dep_manager], perms["brand:view"]
+      - /jsp/user/login.jsp=anon
+      - /user/login=anon
+      - /brand/list=authc,onlineLimit, orRoles[sys_manager,dep_manager], perms["brand:view"]
+      - /brand/add=authc,onlineLimit, orRoles[sys_manager,dep_manager], perms["brand:add"]
+      - /jsp/brand/add.jsp=authc,onlineLimit, orRoles[sys_manager,dep_manager], perms["brand:add"]
+      - /brand/**=authc,onlineLimit, orRoles[sys_manager,dep_manager]
+      - /jsp/**=authc,onlineLimit
+      - /user/**=authc,onlineLimit
+    retry-max: 5 # 最大登录重试次数
+    retry-delay: 300 # 达到最大重试次数后多长时间可以重试，单位秒
+    online-devices: 1 # 同一个帐号同时在线设备数目
+    session-id-header-name: SESSIONID
+

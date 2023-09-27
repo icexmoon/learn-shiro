@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.icexmoon.bootdemo.mapper.PermissionMapper">
+    <select id="selectByUserId" resultType="Permission">
+        select *
+        from tb_user_perm as up
+                 left join tb_permission as p
+                           on up.perm_id = p.id
+        where up.user_id = #{userId}
+    </select>
+</mapper>
